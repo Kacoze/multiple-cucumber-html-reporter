@@ -24,12 +24,6 @@
                         <th>Branch</th>
                         <th><i class="fa fa-tags fa-lg" title="Tags"></i></th>
                         <th>Status</th>
-                        <% if(+suite.app > 0) { %>
-                        <th>App</th>
-                        <% } %>
-                        <% if(+suite.browser > 0) { %>
-                        <th>Browser</th>
-                        <% } %>
                         <% if (suite.displayDuration) { %>
                         <th>Duration</th>
                         <% } %>
@@ -104,48 +98,6 @@
                                 <span><%= statusIcon %></span>
                             </i>
                         </td>
-                        <td>
-                            <% var platformName; %>
-                            <% if (feature.metadata.platform.name.toLowerCase() === 'ios' || feature.metadata.platform.name.toLowerCase() === 'osx') { %>
-                            <% platformName = 'apple'; %>
-                            <% } else if (feature.metadata.platform.name.toLowerCase() === 'android') { %>
-                            <% platformName = 'android'; %>
-                            <% } else if (feature.metadata.platform.name.toLowerCase() === 'windows') { %>
-                            <% platformName = 'windows'; %>
-                            <% } else if (feature.metadata.platform.name.toLowerCase() === 'ubuntu' ||
-                            feature.metadata.platform.name.toLowerCase() === 'linux') { %>
-                            <% platformName = 'linux'; %>
-                            <% } else { %>
-                            <% platformName = 'question-circle not-defined-color'; %>
-                            <% } %>
-                            <i class="fa fa-<%= platformName%> fa-lg"><span><%= platformName %></span></i>
-                            <%= feature.metadata.platform.version %>
-                        </td>
-                        <% if(+suite.app > 0) { %>
-                        <td>
-                            <% if(feature.metadata.app) { %>
-                            <%= feature.metadata.app.name %> <br>V: <%= feature.metadata.app.version %>
-                            <% } %>
-                        </td>
-                        <% } %>
-                        <% if(+suite.browser > 0) { %>
-                        <td>
-                            <% if(feature.metadata.browser) { %>
-                            <% var browserIcon; %>
-                            <% if (['firefox', 'safari', 'chrome'].indexOf(feature.metadata.browser.name.toLowerCase()) > -1) { %>
-                            <% browserIcon = feature.metadata.browser.name.toLowerCase(); %>
-                            <% } else if (feature.metadata.browser.name.toLowerCase() === 'edge' || feature.metadata.browser.name.toLowerCase() === 'microsoftedge'){ %>
-                            <% browserIcon= "edge"; %>
-                            <% } else if (feature.metadata.browser.name.toLowerCase() === 'internet explorer'){ %>
-                            <% browserIcon= "internet-explorer"; %>
-                            <% } else { %>
-                            <% browserIcon = 'question-circle not-defined-color'; %>
-                            <% }%>
-                            <i class="fa fa-<%= browserIcon %> fa-lg"><span><%= feature.metadata.browser.name.toLowerCase() %></span></i>
-                            <%= feature.metadata.browser.version %>
-                            <% } %>
-                        </td>
-                        <% } %>
                         <% if (suite.displayDuration) { %>
                         <td><%= feature.time %></td>
                         <% } %>
