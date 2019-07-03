@@ -19,8 +19,6 @@
                     <thead>
                     <tr>
                         <th>Feature name</th>
-                        <th>Brand/App</th>
-                        <th>Branch</th>
                         <th><i class="fa fa-tags fa-lg" title="Tags"></i></th>
                         <th>Status</th>
                         <% _.each(suite.features[0].metadata, function(metadatum, metadatumIndex) { %>
@@ -49,12 +47,6 @@
                     <tr>
                         <td>
                             <a href="features/<%= feature.id %>.html"><%= feature.name %></a>
-                        </td>
-                        <td>
-                            <%= suite.brandApp %>
-                        </td>
-                        <td>
-                            <%= suite.branch %>
                         </td>
                         <td class="text-center">
                             <% if (feature.tags) { %>
