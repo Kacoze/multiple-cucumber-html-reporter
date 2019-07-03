@@ -19,14 +19,11 @@
                     <thead>
                     <tr>
                         <th>Feature name</th>
+                        <th>Brand</th>
+                        <th>App</th>
+                        <th>Branch</th>
                         <th><i class="fa fa-tags fa-lg" title="Tags"></i></th>
                         <th>Status</th>
-                        <th class="text-center">
-                            <i class="fa fa-desktop fa-lg"></i>
-                            <i class="fa fa-mobile fa-lg"></i>
-                        </th>
-                        <th>Device</th>
-                        <th>OS</th>
                         <% if(+suite.app > 0) { %>
                         <th>App</th>
                         <% } %>
@@ -59,6 +56,15 @@
                     <tr>
                         <td>
                             <a href="features/<%= feature.id %>.html"><%= feature.name %></a>
+                        </td>
+                        <td>
+                            <%= feature.metadata.brand %>
+                        </td>
+                        <td>
+                            <%= feature.metadata.app %>
+                        </td>
+                        <td>
+                            <%= feature.metadata.branch %>
                         </td>
                         <td class="text-center">
                             <% if (feature.tags) { %>
@@ -97,32 +103,6 @@
                             <i class="fa fa-<%= statusIcon %> fa-lg" data-toggle="tooltip" data-placement="top" title="<%= status %>">
                                 <span><%= statusIcon %></span>
                             </i>
-                        </td>
-                        <td class="text-center">
-                            <% var deviceType; %>
-                            <% var deviceIcon; %>
-                            <% if (['android','ios'].indexOf(feature.metadata.platform.name.toLowerCase()) > -1 ) { %>
-                            <% deviceType = 'Mobile / Tablet'; %>
-                            <% deviceIcon = 'mobile'; %>
-                            <% } else if (['windows', 'osx', 'linux', 'ubuntu'].indexOf(feature.metadata.platform.name.toLowerCase()) > -1) { %>
-                            <% deviceType = 'Desktop'; %>
-                            <% deviceIcon = 'desktop'; %>
-                            <% } else { %>
-                            <% deviceType = 'Not known'; %>
-                            <% deviceIcon = 'question-circle not-defined-color'; %>
-                            <% } %>
-                            <i class="fa fa-<%= deviceIcon %> fa-lg" data-toggle="tooltip" data-placement="top" title="<%= deviceType %>">
-                                <span><%= deviceIcon %></span>
-                            </i>
-                        </td>
-                        <td>
-                            <% var device; %>
-                            <% if (feature.metadata.device === 'not known' || feature.metadata.device === '') { %>
-                            <% device = '<i class="fa fa-question-circle not-defined-color fa-lg"></i> not known'; %>
-                            <% } else { %>
-                            <% device = feature.metadata.device; %>
-                            <% } %>
-                            <%= device %>
                         </td>
                         <td>
                             <% var platformName; %>
